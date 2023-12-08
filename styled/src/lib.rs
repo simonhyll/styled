@@ -10,19 +10,17 @@ pub use stylist::style;
 
 #[macro_export]
 macro_rules! view {
-    ($cx: expr, $styles:expr, $($tokens:tt)*) => {{
+    ($styles:expr, $($tokens:tt)*) => {{
 
-        let cx = $cx;
         let style = $styles;
 
         let $crate::StyleInfo { class_name, style_string } = $crate::get_style_info(style);
         use $crate::Style;
         view! {
-            cx,
             class={class_name.clone()},
             <Style>{style_string.clone()}</Style>
             $($tokens)*
-        }.into_view(cx)
+        }.into_view()
     }};
 }
 
