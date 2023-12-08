@@ -11,7 +11,6 @@ pub use stylist::style;
 #[macro_export]
 macro_rules! view {
     ($styles:expr, $($tokens:tt)*) => {{
-
         let style = $styles;
 
         let $crate::StyleInfo { class_name, style_string } = $crate::get_style_info(style);
